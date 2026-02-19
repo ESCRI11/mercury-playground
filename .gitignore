@@ -4,6 +4,7 @@ node_modules/
 # builds
 public/bundle.js
 public/bundle.min.js
+public/lib/
 
 # ini file variables
 mercury.ini

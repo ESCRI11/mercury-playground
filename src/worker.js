@@ -10,6 +10,7 @@ const MonoInput = require('./core/MonoInput.js');
 const PolySynth = require('./core/PolySynth.js');
 const PolySample = require('./core/PolySample.js');
 const Tempos = require('./data/genre-tempos.json');
+const MonoKokoro = require('./core/MonoKokoro.js');
 const MonoOSC = require('./core/MonoOSC.js');
 const { divToS } = require('./core/Util.js');
 
@@ -203,6 +204,15 @@ function code({ file, engine, canvas, p5canvas }){
 			let inst = new MonoNoise(engine, type, canvas, line);
 			
 			objectMap.applyFunctions(functions, inst, type);
+			return inst;
+		},
+		'kokoro' : (obj) => {
+			let type = obj.type;
+			let args = obj.functions;
+			let inst = new MonoKokoro(engine, type, canvas, obj.line);
+
+			objectMap.applyFunctions(args, inst, type);
+			inst.prerender();
 			return inst;
 		},
 		'polySynth' : (obj) => {

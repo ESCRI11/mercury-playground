@@ -10,7 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "watch": "watchify -t brfs src/main.js -o public/bundle.js -v | terser public/bundle.js -o public/bundle.min.js -c -m --comments 'false' & node server.js --log && fg",
-    "build": "npm run data && npm run browserify && npm run uglify",
+    "build": "npm run data && npm run copy-kokoro && npm run browserify && npm run uglify",
+    "copy-kokoro": "mkdir -p public/lib && cp node_modules/kokoro-js/dist/kokoro.web.js public/lib/kokoro.web.js",
     "data": "node index.js",
     "browserify": "browserify -t brfs src/main.js -o public/bundle.js",
     "uglify": "terser public/bundle.js -o public/bundle.min.js -c -m --comments 'false'"
@@ -33,8 +34,10 @@
     "file-saver": "^2.0.5",
     "fs-extra": "^9.1.0",
     "hydra-synth": "1.3.17",
+    "kokoro-js": "^1.2.1",
     "mercury-examples": "^1.0.12",
     "mercury-lang": "^1.11.0",
+
     "node-osc": "^8.0.6",
     "p5": "^1.4.2",
     "raf-loop": "^1.1.3",
