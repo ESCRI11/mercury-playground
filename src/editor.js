@@ -321,6 +321,8 @@ const Editor = function({ context, engine, canvas, p5canvas }) {
 		let noError = code({ file: this.cm.getValue(), engine: engine, canvas: canvas, p5canvas: p5canvas });
 		engine.resume();
 
+		if (window.emit) window.emit(['/mercury-code', this.cm.getValue()]);
+
 		// if an error occured, flash red!
 		this.flash(this.cm.firstLine(), this.cm.lastLine()+1, !noError);
 

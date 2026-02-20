@@ -23,8 +23,14 @@ const server = app.listen(port, () => {
 
 const io = socket(server);
 
+let lastCode = '';
+
 app.get("/", (request, response) => {
 	response.sendFile(__dirname + "/public/index.html");
+});
+
+app.get('/api/code', (req, res) => {
+	res.json({ code: lastCode });
 });
 
 app.post('/api/code', (req, res) => {
@@ -32,13 +38,15 @@ app.post('/api/code', (req, res) => {
 	if (!code) {
 		return res.status(400).json({ status: 'error', message: 'Missing "code" in request body' });
 	}
+	lastCode = code;
 	io.emit('osc', ['/mercury-code', code]);
 	verboseLog('API /api/code:', code);
 	res.json({ status: 'ok' });
 });
 
 app.post('/api/silence', (req, res) => {
-	io.emit('osc', ['/mercury-code', 'silence']);
+	lastCode = '';
+	io.emit('osc', ['/mercury-code', '// silence']);
 	verboseLog('API /api/silence');
 	res.json({ status: 'ok' });
 });
@@ -162,6 +170,9 @@ io.sockets.on('connection', (socket) => {
 	const oscClient = new osc.Client('127.0.0.1', outPort);
 	console.log(`Receive messages from Mercury on port ${outPort}`);
 	socket.on('message', (msg) => {
+		if (Array.isArray(msg) && msg[0] === '/mercury-code' && msg[1]) {
+			lastCode = msg[1];
+		}
 		oscClient.send(msg);
 		verboseLog('Received:', msg);
 	});
