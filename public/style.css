@@ -386,6 +386,7 @@ textarea:hover {
 .ui {
 	margin: 20px;
 	z-index: 10;
+	transition: margin-right 0.25s ease;
 }
 
 .loadscreen {
