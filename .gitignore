@@ -8,3 +8,6 @@ public/lib/
 
 # ini file variables
 mercury.ini
+
+# runtime state
+current_piece.txt
