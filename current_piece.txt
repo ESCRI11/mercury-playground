@@ -1,0 +1,27 @@
+set tempo 95
+set scale major_pentatonic c
+
+list sunny_vis ['osc(6,0.08,1.5).color(1,0.8,0.3).rotate(0,0.05).out()' 'voronoi(4,0.1,0.3).color(0.9,0.7,0.2).scale(1.2).out()' 'noise(2,0.1).color(1,0.9,0.4).brightness(0.3).out()']
+
+new sample kick_house time(1/4) gain(0.6) visual(sunny_vis)
+new sample hat_808 time(1/8) pan(random) gain(0.4)
+new sample clap_808 time(1/2) start(0.3) gain(0.5)
+
+list melody [0 2 4 7 9 7 4 2]
+new synth triangle note(melody 3) time(1/8) shape(5 150) name(lead)
+    set lead fx(chorus 0.3 0.2) pan(0.3) gain(0.7)
+
+new synth saw note([0 4] 1) time(1/1) shape(off) super(3 0.08) name(pad)
+    set pad fx(filter low 2000 0.3) gain(0.3)
+
+list bassline [0 -5 4 2 0 -5 7 0]
+new synth saw note(bassline 0) time(1/8) shape(1 1/16) super(2 0.05) name(phatbass)
+    set phatbass fx(filter low 600 0.7) fx(drive 3) gain(0.8) pan(-0.2)
+
+list arp [0 4 7 9 12 9 7 4]
+new synth sine note(arp 4) time(1/16) shape(1 1/32) name(sparkle)
+    set sparkle fx(delay 3/16 5/16 0.6) pan(0.7) gain(0.5)
+
+new kokoro time(4/1) say(saturday_sunshine grilling_time feeling_good life_is_sweet) voice(af_heart) fx(reverb 0.6) amp(0.4)
+
+set all fx(reverb 0.5 6) fx(compress)

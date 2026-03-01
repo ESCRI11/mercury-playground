@@ -125,7 +125,7 @@ p {
 
 #menu {
 	/* background: rgb(0, 0, 0, 0.3); */
-	margin: 0 auto; 
+	margin: 0 auto;
 	width: 100%;
 	max-width: 100%;
 	/* height: auto; */
@@ -133,7 +133,7 @@ p {
 }
 
 #console-log {
-	white-space: pre-wrap; 
+	white-space: pre-wrap;
 	margin: 0px;
 }
 
@@ -157,9 +157,9 @@ button {
 
 	overflow: hidden;
 	white-space: nowrap;
-	text-overflow: ellipsis; 
+	text-overflow: ellipsis;
 }
-	
+
 .hide p {
 	text-align: right;
 }
@@ -359,7 +359,7 @@ textarea:hover {
 	/* cursor: pointer; */
 }
 
-.CodeMirror-matchingbracket { 
+.CodeMirror-matchingbracket {
 	color: var(--secundary) !important;
 	text-decoration: none !important;
 	background: none !important;
@@ -390,13 +390,13 @@ textarea:hover {
 }
 
 .loadscreen {
-	opacity: 1; 
-	background: var(--bg); 
+	opacity: 1;
+	background: var(--bg);
 	width: 100%;
-	height: 100%; 
+	height: 100%;
 	z-index: 999999;
-	top: 0; 
-	left: 0; 
+	top: 0;
+	left: 0;
 	position: fixed;
 	/* display: none; */
 }
