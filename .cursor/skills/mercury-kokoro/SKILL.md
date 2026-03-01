@@ -51,7 +51,7 @@ time(3/16)   // dotted eighth
 Kokoro provides high-quality voice models. Pass the voice ID directly:
 
 **American English (Female):**
-`af_heart` (best, default), `af_bella`, `af_nicole`, `af_sarah`, `af_kore`, `af_aoede`, `af_nova`, `af_alloy`, `af_jessica`, `af_river`, `af_sky`
+`af_heart`, `af_bella`, `af_nicole`, `af_sarah`, `af_kore`, `af_aoede`, `af_nova`, `af_alloy`, `af_jessica`, `af_river`, `af_sky`
 
 **American English (Male):**
 `am_fenrir`, `am_michael`, `am_puck`, `am_eric`, `am_adam`, `am_echo`, `am_liam`, `am_onyx`, `am_santa`
